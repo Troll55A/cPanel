@@ -10,12 +10,14 @@ const path = require('path');
 //cabeceras de acceso de http
 
 const puerto = process.env.PORT;
+const hostname = process.env.HOST;
+
 app.set('port', (process.env.PORT || puerto))
 main.start()
 .then(function(){
-    app.start = app.listen(app.get('port'),function(){
+    app.start = app.listen(app.get('port'), hostname, function(){
         console.log("app");
-        console.log("ESCUCHANDO EN EL PUERTO",puerto);
+        console.log("ESCUCHANDO EN EL PUERTO",puerto, "y en la dirección", hostname);
     });
 });
 //rutas declaradas para el uso de ruta y archivos media
